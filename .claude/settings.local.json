@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"d:\\\\OneDrive\\\\TRABAJO\\\\01 VUDOING WORKS\\\\CLAUDE\\\\projects claude\\\\email forens\" -Recurse | Select-Object FullName, @{N='Size';E={if\\($_.PSIsContainer\\){'<dir>'}else{\"{0:N0} B\" -f $_.Length}}})",
+      "Bash(cmd /c \"mklink /J \\\\\"C:\\\\xampp\\\\htdocs\\\\forensemail\\\\\" \\\\\"D:\\\\OneDrive\\\\TRABAJO\\\\01 VUDOING WORKS\\\\CLAUDE\\\\projects claude\\\\email forens\\\\\"\")",
+      "Bash(curl -s http://localhost:8080/js/parser.js)",
+      "Bash(curl -s http://localhost:8080/js/main.js)",
+      "Bash(curl -s http://localhost:8080/index.html)",
+      "PowerShell(& \"C:\\\\xampp\\\\mysql\\\\bin\\\\myisamchk.exe\" -r \"C:\\\\xampp\\\\mysql\\\\data\\\\mysql\\\\db.MAI\")",
+      "PowerShell(& \"C:\\\\xampp\\\\mysql\\\\bin\\\\aria_chk.exe\" -r \"C:\\\\xampp\\\\mysql\\\\data\\\\mysql\\\\db\")",
+      "PowerShell(netstat -ano)",
+      "Bash(Get-ChildItem -Path \".\")",
+      "Bash(Select-Object Name, Mode)",
+      "PowerShell(Get-ChildItem -Path \"MEDX/backend\" -Directory | Where-Object { $_.Name -ne 'vendor' } | Select-Object Name)",
+      "Bash(sed -n '1,121p' routes/api.php.bak)",
+      "Read(//tmp/**)",
+      "Bash(sed -n '133,135p' routes/api.php.bak)",
+      "Bash(find \"d:\\\\\\\\OneDrive\\\\\\\\TRABAJO\\\\\\\\01 VUDOING WORKS\\\\\\\\CLAUDE\\\\\\\\projects claude\" -name \"*.sql\" -o -name \"*schema*\" -o -name \"*migrate*\")"
+    ]
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -n \"addEventListener.*drop\\\\|addEventListener.*drag\\\\|aw-drop-zone\" \"d:\\\\\\\\OneDrive\\\\\\\\TRABAJO\\\\\\\\01 VUDOING WORKS\\\\\\\\CLAUDE\\\\\\\\projects claude\\\\\\\\email forens\\\\\\\\admin.html\")"
+    ]
+  }
+}
