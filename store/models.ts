@@ -10,21 +10,20 @@ export const useModelsStore = defineStore('models', () => {
     search: '',
     ageMin: null,
     ageMax: null,
-    city: '',
-    category: '',
-    status: 'all',
-    sortBy: 'popular',
+    Ciudad_Base: '',
+    Estado_de_Disponibilidad: 'todas',
+    sortBy: 'recientes',
   })
 
-  const liveModels = computed(() => models.value.filter(m => m.isLive))
-  const onlineModels = computed(() => models.value.filter(m => m.isOnline))
+  const disponibles = computed(() =>
+    models.value.filter(m => m.Estado_de_Disponibilidad === 'Disponible Ahora'),
+  )
 
   async function fetchModels() {
     loading.value = true
     error.value = null
     try {
-      // TODO: replace with real API call
-      // const data = await $fetch<Model[]>('/api/models')
+      // TODO: const data = await $fetch<Model[]>('/api/modelos')
       // models.value = data
     }
     catch (e) {
@@ -41,21 +40,11 @@ export const useModelsStore = defineStore('models', () => {
       search: '',
       ageMin: null,
       ageMax: null,
-      city: '',
-      category: '',
-      status: 'all',
-      sortBy: 'popular',
+      Ciudad_Base: '',
+      Estado_de_Disponibilidad: 'todas',
+      sortBy: 'recientes',
     }
   }
 
-  return {
-    models,
-    loading,
-    error,
-    filters,
-    liveModels,
-    onlineModels,
-    fetchModels,
-    resetFilters,
-  }
+  return { models, loading, error, filters, disponibles, fetchModels, resetFilters }
 })
