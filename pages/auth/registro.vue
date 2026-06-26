@@ -34,14 +34,14 @@ const submit = async () => {
     .replace(/-+/g, '-')
     .trim()
 
-  const ok = await registerModelo(form.email, form.password, {
+  const result = await registerModelo(form.email, form.password, {
     Nombre: form.Nombre,
     Edad: Number(form.Edad),
     Ciudad_Base: form.Ciudad_Base,
     Slug: `${slug}-${Date.now().toString(36)}`,
   })
 
-  if (ok) await navigateTo('/cuenta')
+  if (result === true) await navigateTo('/cuenta')
 }
 
 useHead({ title: 'Registro de modelo — lasrikas.com' })

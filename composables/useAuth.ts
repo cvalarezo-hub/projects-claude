@@ -35,6 +35,18 @@ export const useAuth = () => {
       return false
     }
 
+    // Si el email requiere confirmación, la sesión aún no existe.
+    // Intentamos login inmediato para obtener sesión activa.
+    if (!authData.session) {
+      const { error: loginError } = await supabase.auth
+        .signInWithPassword({ email, password })
+      if (loginError) {
+        error.value = 'Cuenta creada. Revisa tu correo para confirmar tu email antes de continuar.'
+        loading.value = false
+        return 'confirm-email'
+      }
+    }
+
     const { error: insertError } = await supabase
       .from('modelos')
       .insert({
