@@ -6,8 +6,9 @@ const user = useSupabaseUser()
 const { fetchByUserId, updatePerfil, uploadPhoto, loading, error } = useSupabaseModels()
 
 const { data: perfil, refresh } = await useAsyncData(
-  'mi-perfil-edit',
-  () => fetchByUserId(user.value!.id),
+  () => `mi-perfil-edit-${user.value?.id}`,
+  () => user.value?.id ? fetchByUserId(user.value.id) : Promise.resolve(null),
+  { server: false, watch: [user] },
 )
 
 const saved = ref(false)

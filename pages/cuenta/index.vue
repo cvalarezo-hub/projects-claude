@@ -6,8 +6,9 @@ const { fetchByUserId } = useSupabaseModels()
 const { logout } = useAuth()
 
 const { data: perfil, pending } = await useAsyncData(
-  'mi-perfil',
-  () => fetchByUserId(user.value!.id),
+  () => `mi-perfil-${user.value?.id}`,
+  () => user.value?.id ? fetchByUserId(user.value.id) : Promise.resolve(null),
+  { server: false, watch: [user] },
 )
 
 useHead({ title: 'Mi cuenta — lasrikas.com' })
