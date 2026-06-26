@@ -5,15 +5,21 @@ const user = useSupabaseUser()
 const { fetchByUserId } = useSupabaseModels()
 const { logout } = useAuth()
 
-const perfil = ref<Awaited<ReturnType<typeof fetchByUserId>>>(null)
+import type { Model } from '~/types'
+
+const perfil = ref<Model | null>(null)
 const pending = ref(true)
 
-onMounted(async () => {
-  if (user.value?.id) {
-    perfil.value = await fetchByUserId(user.value.id)
-  }
+const cargarPerfil = async () => {
+  if (!user.value?.id) return
+  console.log('[cuenta] cargando perfil para:', user.value.id)
+  perfil.value = await fetchByUserId(user.value.id)
+  console.log('[cuenta] resultado:', perfil.value)
   pending.value = false
-})
+}
+
+onMounted(cargarPerfil)
+watch(user, cargarPerfil)
 
 useHead({ title: 'Mi cuenta — lasrikas.com' })
 </script>
