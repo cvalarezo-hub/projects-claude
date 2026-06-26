@@ -5,11 +5,15 @@ const user = useSupabaseUser()
 const { fetchByUserId } = useSupabaseModels()
 const { logout } = useAuth()
 
-const { data: perfil, pending } = await useAsyncData(
-  () => `mi-perfil-${user.value?.id}`,
-  () => user.value?.id ? fetchByUserId(user.value.id) : Promise.resolve(null),
-  { server: false, watch: [user] },
-)
+const perfil = ref<Awaited<ReturnType<typeof fetchByUserId>>>(null)
+const pending = ref(true)
+
+onMounted(async () => {
+  if (user.value?.id) {
+    perfil.value = await fetchByUserId(user.value.id)
+  }
+  pending.value = false
+})
 
 useHead({ title: 'Mi cuenta — lasrikas.com' })
 </script>

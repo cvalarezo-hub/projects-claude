@@ -5,11 +5,13 @@ definePageMeta({ middleware: 'auth' })
 const user = useSupabaseUser()
 const { fetchByUserId, updatePerfil, uploadPhoto, loading, error } = useSupabaseModels()
 
-const { data: perfil, refresh } = await useAsyncData(
-  () => `mi-perfil-edit-${user.value?.id}`,
-  () => user.value?.id ? fetchByUserId(user.value.id) : Promise.resolve(null),
-  { server: false, watch: [user] },
-)
+const perfil = ref<Awaited<ReturnType<typeof fetchByUserId>>>(null)
+
+const refresh = async () => {
+  if (user.value?.id) perfil.value = await fetchByUserId(user.value.id)
+}
+
+onMounted(refresh)
 
 const saved = ref(false)
 const photoUploading = ref(false)
