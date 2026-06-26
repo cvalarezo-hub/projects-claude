@@ -8,8 +8,8 @@ export default defineNuxtConfig({
   ],
 
   supabase: {
-    url: process.env.SUPABASE_URL,
-    key: process.env.SUPABASE_ANON_KEY,
+    url: process.env.SUPABASE_URL || 'https://bzrffsduulvzsksnoepa.supabase.co',
+    key: process.env.SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ6cmZmc2R1dWx2enNrc25vZXBhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI0ODg5OTUsImV4cCI6MjA5ODA2NDk5NX0.a_cch6wmEpHOudbVDbImcEuFK-WAfVr8P2Qfn-6jYFc',
     redirectOptions: {
       login: '/auth/login',
       callback: '/auth/callback',
