@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS public.modelos (
   slug                     TEXT UNIQUE NOT NULL,
   descripcion              TEXT,
   edad                     SMALLINT NOT NULL CHECK (edad >= 18),
-  nacionalidad             TEXT NOT NULL DEFAULT 'Colombiana',
+  nacionalidad             TEXT NOT NULL DEFAULT 'Ecuatoriana',
   estatura                 SMALLINT,
   peso                     SMALLINT,
   medidas                  TEXT,

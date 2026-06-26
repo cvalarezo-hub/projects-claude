@@ -1,14 +1,14 @@
 <script setup lang="ts">
 useHead({
   title: 'Agencias — lasrikas.com',
-  meta: [{ name: 'description', content: 'Directorio de agencias de modelos en Colombia. Encuentra representación o contrata modelos a través de agencias verificadas.' }],
+  meta: [{ name: 'description', content: 'Directorio de agencias de modelos en Ecuador. Encuentra representación o contrata modelos a través de agencias verificadas.' }],
 })
 
 const agencias = [
-  { nombre: 'Elite Medellín', ciudad: 'Medellín', modelos: 24, descripcion: 'Agencia líder en Antioquia con más de 5 años representando talento femenino de alto nivel.', is_verified: true },
-  { nombre: 'Bogotá VIP Agency', ciudad: 'Bogotá', modelos: 18, descripcion: 'Representación exclusiva para modelos del área metropolitana de Bogotá.', is_verified: true },
-  { nombre: 'Cali Stars', ciudad: 'Cali', modelos: 12, descripcion: 'Agencia especializada en talento del Valle del Cauca.', is_verified: false },
-  { nombre: 'Caribbean Models', ciudad: 'Cartagena', modelos: 9, descripcion: 'Agencia de la Costa Caribe colombiana con modelos disponibles para viajes.', is_verified: true },
+  { nombre: 'Elite Quito', ciudad: 'Quito', modelos: 24, descripcion: 'Agencia líder en Pichincha con más de 5 años representando talento femenino de alto nivel en la sierra ecuatoriana.', is_verified: true },
+  { nombre: 'Guayaquil VIP Agency', ciudad: 'Guayaquil', modelos: 18, descripcion: 'Representación exclusiva para modelos de la ciudad puerto, la más grande del Ecuador.', is_verified: true },
+  { nombre: 'Cuenca Stars', ciudad: 'Cuenca', modelos: 12, descripcion: 'Agencia especializada en talento del Azuay, la ciudad más hermosa del país.', is_verified: false },
+  { nombre: 'Costa Models', ciudad: 'Manta', modelos: 9, descripcion: 'Agencia de la costa manabita con modelos disponibles para viajes a todo el Ecuador.', is_verified: true },
 ]
 </script>
 
@@ -17,7 +17,7 @@ const agencias = [
 
     <div class="mb-10">
       <h1 class="text-3xl font-display font-bold text-white">Agencias</h1>
-      <p class="text-white/40 mt-2">Directorio de agencias verificadas en Colombia</p>
+      <p class="text-white/40 mt-2">Directorio de agencias verificadas en Ecuador</p>
     </div>
 
     <!-- Coming soon banner -->

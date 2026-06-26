@@ -15,7 +15,7 @@ const form = reactive({
   Ciudad_Base: '',
 })
 
-const CIUDADES = ['Medellín', 'Bogotá', 'Cali', 'Barranquilla', 'Cartagena', 'Pereira', 'Bucaramanga', 'Manizales', 'Santa Marta', 'Cúcuta', 'Otra']
+const CIUDADES = ['Quito', 'Guayaquil', 'Cuenca', 'Manta', 'Ambato', 'Machala', 'Santo Domingo', 'Ibarra', 'Riobamba', 'Portoviejo', 'Loja', 'Esmeraldas', 'Otra']
 
 const validateStep1 = computed(() =>
   form.email.includes('@')

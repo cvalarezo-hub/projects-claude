@@ -15,7 +15,7 @@ const photoUploading = ref(false)
 
 const ESTADOS: EstadoDisponibilidad[] = ['Disponible Ahora', 'Ocupada', 'De Viaje', 'Inactiva']
 const TODOS_LOS_DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
-const CIUDADES = ['Medellín', 'Bogotá', 'Cali', 'Barranquilla', 'Cartagena', 'Pereira', 'Bucaramanga', 'Manizales', 'Santa Marta', 'Cúcuta', 'Otra']
+const CIUDADES = ['Quito', 'Guayaquil', 'Cuenca', 'Manta', 'Ambato', 'Machala', 'Santo Domingo', 'Ibarra', 'Riobamba', 'Portoviejo', 'Loja', 'Esmeraldas', 'Otra']
 
 const form = reactive({
   Descripción: perfil.value?.Descripción ?? '',
