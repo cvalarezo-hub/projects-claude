@@ -4,7 +4,31 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@pinia/nuxt',
+    '@nuxtjs/supabase',
   ],
+
+  supabase: {
+    url: process.env.SUPABASE_URL,
+    key: process.env.SUPABASE_ANON_KEY,
+    redirectOptions: {
+      login: '/auth/login',
+      callback: '/auth/callback',
+      // Páginas públicas que NO redirigen a login
+      exclude: [
+        '/',
+        '/modelos',
+        '/modelos/**',
+        '/modelo/**',
+        '/agencias',
+        '/agencias/**',
+        '/terminos',
+        '/privacidad',
+        '/cookies',
+        '/como-funciona',
+        '/auth/registro',
+      ],
+    },
+  },
 
   tailwindcss: {
     cssPath: '~/assets/css/main.css',

@@ -12,6 +12,8 @@ const navItems: NavItem[] = [
 const isMenuOpen = ref(false)
 const isScrolled = ref(false)
 const route = useRoute()
+const user = useSupabaseUser()
+const { logout } = useAuth()
 
 const toggleMenu = () => (isMenuOpen.value = !isMenuOpen.value)
 const closeMenu = () => (isMenuOpen.value = false)
@@ -70,12 +72,25 @@ onMounted(() => {
 
         <!-- Desktop CTA -->
         <div class="hidden lg:flex items-center gap-3">
-          <button class="btn-ghost text-sm">
-            Iniciar sesión
-          </button>
-          <button class="btn-primary text-sm">
-            Registrarse
-          </button>
+          <template v-if="user">
+            <NuxtLink to="/cuenta" class="btn-ghost text-sm flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              <span class="max-w-[120px] truncate text-white/70">{{ user.email }}</span>
+            </NuxtLink>
+            <button class="btn-ghost text-sm text-red-400 hover:text-red-300" @click="logout">
+              Salir
+            </button>
+          </template>
+          <template v-else>
+            <NuxtLink to="/auth/login" class="btn-ghost text-sm">
+              Iniciar sesión
+            </NuxtLink>
+            <NuxtLink to="/auth/registro" class="btn-primary text-sm">
+              Registrarse
+            </NuxtLink>
+          </template>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -126,12 +141,22 @@ onMounted(() => {
           </NuxtLink>
 
           <div class="pt-4 flex flex-col gap-2 border-t border-white/[0.06]">
-            <button class="btn-secondary w-full justify-center">
-              Iniciar sesión
-            </button>
-            <button class="btn-primary w-full justify-center">
-              Registrarse gratis
-            </button>
+            <template v-if="user">
+              <NuxtLink to="/cuenta" class="btn-secondary w-full justify-center" @click="closeMenu">
+                Mi cuenta
+              </NuxtLink>
+              <button class="btn-ghost w-full justify-center text-red-400" @click="logout">
+                Cerrar sesión
+              </button>
+            </template>
+            <template v-else>
+              <NuxtLink to="/auth/login" class="btn-secondary w-full justify-center" @click="closeMenu">
+                Iniciar sesión
+              </NuxtLink>
+              <NuxtLink to="/auth/registro" class="btn-primary w-full justify-center" @click="closeMenu">
+                Registrarse gratis
+              </NuxtLink>
+            </template>
           </div>
         </div>
       </div>
