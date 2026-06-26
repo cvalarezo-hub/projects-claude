@@ -30,7 +30,16 @@ export const useAuth = () => {
       .signUp({ email, password })
 
     if (signUpError || !authData.user) {
-      error.value = signUpError?.message ?? 'Error en el registro'
+      // Si el email ya existe, intentar login directo
+      if (signUpError?.message?.toLowerCase().includes('already registered')) {
+        const { error: loginError } = await supabase.auth
+          .signInWithPassword({ email, password })
+        if (!loginError) {
+          loading.value = false
+          return true
+        }
+      }
+      error.value = 'El email ya está registrado. Usa "Iniciar sesión".'
       loading.value = false
       return false
     }

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 definePageMeta({ layout: 'default' })
 
+// Si ya está autenticado, redirigir al panel
+const user = useSupabaseUser()
+if (user.value) await navigateTo('/cuenta')
+
 const { registerModelo, loading, error } = useAuth()
 
 const step = ref<1 | 2>(1)
