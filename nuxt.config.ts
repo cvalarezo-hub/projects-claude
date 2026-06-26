@@ -74,8 +74,9 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:3001/api',
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://lasrikas.com',
+      supabaseUrl: process.env.SUPABASE_URL || '',
+      supabaseKey: process.env.SUPABASE_ANON_KEY || '',
     },
   },
 })
